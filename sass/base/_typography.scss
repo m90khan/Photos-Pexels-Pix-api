@@ -35,6 +35,7 @@ li,
 button,
 label,
 input,
+a,
 p {
   @extend %paragraph;
   font-size: var(--p);
