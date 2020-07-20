@@ -12,6 +12,7 @@ let searchValue;
 let page = 1;
 let fetchLink;
 let currentSearch;
+
 //event listeners
 searchInput.addEventListener("input", updateinput);
 function updateinput(e) {
@@ -20,6 +21,8 @@ function updateinput(e) {
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   currentSearch = searchValue;
+  pixPhotos(searchValue);
+
   searchPhotos(searchValue);
 });
 
@@ -80,28 +83,32 @@ async function loadMore() {
   const data = await fetchApi(fetchLink);
   generatePictures(data);
 }
-// async function pexelsPhotos() {
-//   const datapexel = await fetch(
-//     "https://api.pexels.com/v1/curated?per_page=15&page=1",
-//     {
-//       //method tell us what we want to do with the data
-//       method: "GET",
-//       headers: {
-//         Accept: "application/json",
-//         Authorization: authPexels,
-//       },
-//     }
-//   );
-//   const data = await datapexel.json();
-//   console.log(data.photos);
-//   data.photos.forEach((photo) => {
-//     const galleryImg = document.createElement("div");
-//     galleryImg.classList.add("gallery__img");
-//     galleryImg.innerHTML = `<img src=${photo.src.large}> <p>${photo.photographer}</p>`;
-//     gallery.appendChild(galleryImg);
-//   });
-// }
 
+pexelsPhotos();
+const authPix = "17539114-03bd75b0c6c7532d082b9f7cb";
+async function pixPhotos(query) {
+  const datapix = await fetch(
+    `https://pixabay.com/api/?key=${authPix}&q=${query}&image_type=photo`,
+    {
+      //method tell us what we want to do with the data
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+      },
+    }
+  );
+  const data = await datapix.json();
+  console.log(data.hits);
+  data.hits.forEach((photo) => {
+    const galleryImg = document.createElement("div");
+    galleryImg.classList.add("gallery__img");
+    galleryImg.innerHTML = `
+    <div class="gallery__info  "><p class="btn"><a href="${photo.userImageURL}"target="_blank"  >${photo.user}</a></p> 
+    <a href=${photo.largeImageURL} class="btn btn--secondary" target="_blank">Download</a></div> <img src=${photo.webformatURL}>`;
+    gallery.appendChild(galleryImg);
+  });
+}
+pixPhotos(15);
 // async function searchPhotos(query) {
 //   const datapexel = await fetch(
 //     `https://api.pexels.com/v1/search?query=${query}+query&per_page=15&page=1`,
@@ -124,5 +131,3 @@ async function loadMore() {
 //     gallery.appendChild(galleryImg);
 //   });
 // }
-
-pexelsPhotos();

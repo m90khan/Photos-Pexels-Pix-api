@@ -26,7 +26,7 @@ Order: Base + typography > general layout + grid > page layout >componenets
   --h2: calc(3.5rem + 1vw);
   --h3: calc(3rem + 1vw);
   --h4: calc(2.4rem + 1vw);
-  --p: calc(1.5rem + 1vw);
+  --p: calc(0.2rem + 1vw);
   --bigtext: calc(6rem + 1vw);
   --shadow-dark: 1rem 1rem 4rem rgba(0, 0, 0, 0.5),
     -1rem -1rem 4rem rgba(0, 0, 0, 0.5);
@@ -65,7 +65,7 @@ a {
   text-decoration: none; }
 
 ::selection {
-  background-color: #ffb142;
+  background-color: #f52854;
   color: #fff; }
 
 .opening {
@@ -152,6 +152,7 @@ li,
 button,
 label,
 input,
+a,
 p {
   font-family: "Rubik", sans-serif;
   font-weight: 100; }
@@ -175,19 +176,17 @@ li,
 button,
 label,
 input,
+a,
 p {
   font-size: var(--p); }
 
 .btn, .btn:link, .btn:visited {
   text-transform: uppercase;
   text-decoration: none;
-  padding: 1.5rem 6rem;
   display: inline-block;
-  border-radius: 10rem;
   transition: all 0.2s;
   position: relative;
   font-size: 1.8rem;
-  border: none;
   cursor: pointer; }
 
 .btn:active, .btn:focus {
@@ -204,9 +203,7 @@ p {
 
 .btn::after {
   content: " ";
-  padding: 1.5rem 6rem;
   display: inline-block;
-  border-radius: 10rem;
   position: absolute;
   font-size: 1.8rem;
   height: 100%;
@@ -218,21 +215,25 @@ p {
 
 .btn--primary {
   background-color: #fff;
-  color: #777; }
+  color: #000;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  border: 1px solid black; }
   .btn--primary::after {
     background-color: #fff; }
 
 .btn--secondary {
-  background-color: #ffb142;
+  background-color: #f52854;
   color: #faf9f9; }
   .btn--secondary::after {
-    background-color: #ffb142; }
+    background-color: #f52854; }
 
 .btn-text, .btn-text:link, .btn-text:visited {
   text-transform: uppercase;
   text-decoration: none;
-  color: #ffb142;
-  border-left: 2px solid #ffb142;
+  color: #f52854;
+  border-left: 2px solid #f52854;
   padding: 1rem;
   display: inline-block;
   transition: all 0.2s;
@@ -263,50 +264,77 @@ p {
   left: 0;
   transition: all 0.5s;
   transform: translateX(-100%);
-  background: #ffb142;
+  background: #f52854;
   z-index: -1; }
 
-.starter {
+.container {
   min-height: 100vh;
-  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  color: #fff; }
+  .container .header {
+    color: #000;
+    background: #f52854;
+    min-height: 25vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center; }
+    .container .header h2 {
+      color: #fff;
+      font-weight: 600;
+      padding: 2rem; }
+
+.search {
+  width: 100%;
+  display: flex;
+  flex-direction: flow;
+  justify-content: center;
+  align-items: center;
+  width: 50%; }
+  .search__input {
+    padding: 1rem;
+    width: 40%;
+    border: none;
+    border: 1px solid black; }
+
+main {
+  width: 80%;
+  margin: auto; }
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  row-gap: 5rem; }
+  .gallery__info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0; }
+    .gallery__info p a {
+      color: #f52854; }
+    .gallery__info a {
+      color: white; }
+  .gallery__img {
+    overflow: hidden;
+    padding: 2rem 1rem; }
+    .gallery__img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; }
+
+.nav-button {
+  min-height: 30vh;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
-  background: #ffb142;
-  color: #fff; }
-  .starter .logo {
-    background: #f0eeee;
-    color: #000;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 4rem;
-    border-radius: 1rem;
-    animation: tofro 4s ease-in-out infinite alternate; }
-    .starter .logo h2 {
-      background: linear-gradient(-45deg, #ffb142 0% 50%, #000 50% 100%);
-      color: transparent;
-      -webkit-background-clip: text;
-      background-clip: text; }
-    .starter .logo img {
-      animation: rotate360 5s ease-in-out infinite; }
+  align-items: center; }
 
-@keyframes tofro {
-  0% {
-    transform: translateX(-10%); }
-  50% {
-    opacity: 1;
-    transform: translateX(10%); }
-  100% {
-    opacity: 1;
-    transform: translateX(0%) scale(1.5); } }
-
-@keyframes rotate360 {
-  from {
-    transform: rotate(0deg); }
-  to {
-    transform: rotate(-360deg); } }
+.more {
+  background: #f52854; }
 
 /* */
