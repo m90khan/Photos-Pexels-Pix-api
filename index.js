@@ -1,7 +1,5 @@
-// 563492ad6f91700001000001545f43d70873455a84aa28d0ea811cbd
-// 17539114-03bd75b0c6c7532d082b9f7cb
-
 const authPexels = "563492ad6f91700001000001545f43d70873455a84aa28d0ea811cbd";
+const authPix = "17539114-03bd75b0c6c7532d082b9f7cb";
 const gallery = document.querySelector(".gallery");
 const searchInput = document.querySelector(".search__input");
 const form = document.querySelector(".search");
@@ -85,7 +83,6 @@ async function loadMore() {
 }
 
 pexelsPhotos();
-const authPix = "17539114-03bd75b0c6c7532d082b9f7cb";
 async function pixPhotos(query) {
   const datapix = await fetch(
     `https://pixabay.com/api/?key=${authPix}&q=${query}&image_type=photo`,
@@ -109,25 +106,3 @@ async function pixPhotos(query) {
   });
 }
 pixPhotos(15);
-// async function searchPhotos(query) {
-//   const datapexel = await fetch(
-//     `https://api.pexels.com/v1/search?query=${query}+query&per_page=15&page=1`,
-//     {
-//       //method tell us what we want to do with the data
-//       method: "GET",
-//       headers: {
-//         Accept: "application/json",
-//         Authorization: authPexels,
-//       },
-//     }
-//   );
-
-//   const data = await datapexel.json();
-//   console.log(data.photos);
-//   data.photos.forEach((photo) => {
-//     const galleryImg = document.createElement("div");
-//     galleryImg.classList.add("gallery__img");
-//     galleryImg.innerHTML = `<img src=${photo.src.large}> <p>${photo.photographer}</p>`;
-//     gallery.appendChild(galleryImg);
-//   });
-// }
