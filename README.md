@@ -4,7 +4,7 @@
     <img src="img/favicon.jpg" alt="Logo" width="120" height="120">
   </a>
 
-  <h3 align="center">Pixbay Clone</h3>
+  <h3 align="center">Unsplash/Pixbay/Pexels Clone</h3>
 
   <p align="center">
 Fetching Data from Pexels and PixBay API's and displaying them <br />
