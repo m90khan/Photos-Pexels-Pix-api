@@ -1,5 +1,4 @@
-const authPexels = "563492ad6f91700001000001545f43d70873455a84aa28d0ea811cbd";
-const authPix = "17539114-03bd75b0c6c7532d082b9f7cb";
+import { authPexels, authPix } from "./apikeys.js";
 const gallery = document.querySelector(".gallery");
 const searchInput = document.querySelector(".search__input");
 const form = document.querySelector(".search");
