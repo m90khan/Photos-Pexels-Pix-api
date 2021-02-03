@@ -73,6 +73,7 @@ async function loadMore() {
   page++;
   //if value already there
   if (currentSearch) {
+    // query gets cleared up everytime
     fetchLink = `https://api.pexels.com/v1/search?query=${currentSearch}+query&per_page=15&page=${page}`;
   } else {
     fetchLink = `https://api.pexels.com/v1/curated?per_page=15&page=${page}`;
